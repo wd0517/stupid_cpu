@@ -25,6 +25,10 @@ pip install -U git+https://github.com/wd0517/stupid_cpu.git
 run_stupid_cpu
 ```
 
+## Platform
+
+- Linux + cgroup
+
 ## Requirements
 
 - Python3
