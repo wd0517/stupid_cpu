@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='stupid_cpu',
-    version='1.0',
+    version='1.1',
     description='Control cpu usage by cgroups',
     author='di.wang',
     packages=find_packages(),
