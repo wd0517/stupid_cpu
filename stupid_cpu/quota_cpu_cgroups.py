@@ -12,6 +12,8 @@ from .consts import (
 CustomCgroup = Cgroup
 
 
+# Cgroup 使用了 cpu.shares 去控制 cpu 的使用率, 该方法在其他进程没有跑满 CPU 时达不到控制目的
+# 重写为使用 cpu.cfs_period_us 和 cpu.cfs_quota_us 强制控制对 CPU 时间的使用
 def _quota_set_cpu_limit(self, limit=None):
     if 'cpu' in self.cgroups:
         value = int(CPU_PER_PERIOD * CPU_COUNT * (limit / 100))
