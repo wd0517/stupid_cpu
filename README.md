@@ -6,7 +6,7 @@
 - [ ] 命令行参数控制
 - [ ] 更优雅的进程名
 
-## 安装方式
+## Install
 
 ```
 pip install git+https://github.com/wd0517/stupid_cpu.git

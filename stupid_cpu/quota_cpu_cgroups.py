@@ -17,13 +17,15 @@ CustomCgroup = Cgroup
 def _quota_set_cpu_limit(self, limit=None):
     if 'cpu' in self.cgroups:
         value = int(CPU_PER_PERIOD * CPU_COUNT * (limit / 100))
+        # cgroup 限制最小值为 1000
+        quota = 1000 if value < 1000 else value
 
         cpu_cfs_peroid_file = self._get_cgroup_file('cpu', 'cpu.cfs_period_us')
         cpu_cfs_quota_file = self._get_cgroup_file('cpu', 'cpu.cfs_quota_us')
         with open(cpu_cfs_peroid_file, 'w+') as f:
             f.write('{}\n'.format(CPU_PER_PERIOD))
         with open(cpu_cfs_quota_file, 'w+') as f:
-            f.write('{}\n'.format(value))
+            f.write('{}\n'.format(quota))
     else:
         raise CgroupsException(
             'CPU hierarchy not available in this cgroup')
