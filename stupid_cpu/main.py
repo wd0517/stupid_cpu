@@ -1,3 +1,4 @@
+import time
 from multiprocessing import Pool
 
 import psutil
@@ -37,7 +38,8 @@ def main():
     # 当其他进程的 CPU 占用变高时, 调低本应用的 CPU 使用限制, 不影响系统正常使用
     cur_cpu_limit = CPU_LIMIT
     while True:
-        cur_cpu_percent = psutil.cpu_percent(3)
+        time.sleep(5)
+        cur_cpu_percent = psutil.cpu_percent()
         if cur_cpu_percent > CPU_LIMIT:
             cur_cpu_limit = cur_cpu_limit - (cur_cpu_percent - CPU_LIMIT)
         else:
