@@ -12,6 +12,12 @@
 pip install git+https://github.com/wd0517/stupid_cpu.git
 ```
 
+## Run
+
+```
+run_stupid_cpu
+```
+
 ## Requirements
 
 - Python3
